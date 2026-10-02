@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>丈くん 初お泊まりチェックリスト</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#1f2937;--muted:#6b7280;--line:#e5e7eb;--blue:#2563eb;--green:#16a34a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif}
+.wrap{max-width:760px;margin:auto;padding:16px 14px 110px}h1{font-size:24px;line-height:1.35;margin:6px 0}.sub{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 12px}
+.sticky{position:sticky;top:0;z-index:10;background:rgba(246,247,249,.94);backdrop-filter:blur(10px);padding:8px 0 10px}
+.progress{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.bar{height:10px;background:#edf0f4;border-radius:999px;overflow:hidden;margin-top:8px}.bar>div{height:100%;width:0;background:var(--green)}
+.actions{display:flex;gap:8px;margin-top:10px}button{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px;font-weight:700}button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+section{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:14px 0}h2{font-size:18px;margin:0;padding:16px}
+label{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-top:1px solid var(--line);cursor:pointer}
+input[type=checkbox]{appearance:none;-webkit-appearance:none;width:26px;height:26px;min-width:26px;border:2px solid #9ca3af;border-radius:7px;margin:0;position:relative;background:#fff}
+input[type=checkbox]:checked{background:var(--blue);border-color:var(--blue)}input[type=checkbox]:checked:after{content:"";position:absolute;left:7px;top:2px;width:7px;height:13px;border:solid white;border-width:0 3px 3px 0;transform:rotate(45deg)}
+.txt{font-size:16px;line-height:1.45}.txt small{display:block;color:var(--muted);font-size:12px;margin-top:3px}input:checked+.txt{color:#6b7280;text-decoration:line-through}
+.note{background:#fff7ed;border:1px solid #fed7aa;border-radius:16px;padding:14px 16px;font-size:13px;line-height:1.65;color:#7c2d12}
+.footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.footerin{max-width:760px;margin:auto;display:flex;gap:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>丈くん 初お泊まりチェックリスト</h1>
+<p class="sub">淡路島・南淡路／1泊2日／車移動／生後2か月後半<br>タップでチェック。状態はこのブラウザに自動保存されます。</p>
+
+<div class="sticky"><div class="progress">
+<div class="row"><strong>準備進捗</strong><span id="count">0 / 0</span></div>
+<div class="bar"><div id="bar"></div></div>
+<div class="actions"><button class="primary" onclick="shareState()">今の状態を共有</button><button onclick="resetAll()">リセット</button></div>
+</div></div>
+
+<section><h2>1. 最重要・忘れると困るもの</h2>
+<label><input type="checkbox"><span class="txt">母子健康手帳</span></label>
+<label><input type="checkbox"><span class="txt">マイナ保険証／健康保険証</span></label>
+<label><input type="checkbox"><span class="txt">乳幼児医療証</span></label>
+<label><input type="checkbox"><span class="txt">スマホ・充電器・モバイルバッテリー</span></label>
+<label><input type="checkbox"><span class="txt">チャイルドシート</span></label>
+<label><input type="checkbox"><span class="txt">普段飲んでいる薬・処方薬<small>ある場合のみ</small></span></label>
+</section>
+
+<section><h2>2. おむつ・お世話</h2>
+<label><input type="checkbox"><span class="txt">おむつ 25〜30枚<small>普段の使用量＋余裕分</small></span></label>
+<label><input type="checkbox"><span class="txt">おしりふき 1パック</span></label>
+<label><input type="checkbox"><span class="txt">おむつ替えシート</span></label>
+<label><input type="checkbox"><span class="txt">使用済みおむつ用の防臭袋 10〜15枚</span></label>
+<label><input type="checkbox"><span class="txt">汚れ物用ビニール袋／ジップ袋 3〜5枚</span></label>
+<label><input type="checkbox"><span class="txt">おむつかぶれ用クリーム<small>普段使っていれば</small></span></label>
+</section>
+
+<section><h2>3. ミルク・授乳</h2>
+<label><input type="checkbox"><span class="txt">粉ミルク／キューブ／スティック<small>想定回数＋2〜3回分</small></span></label>
+<label><input type="checkbox"><span class="txt">哺乳瓶 2〜3本</span></label>
+<label><input type="checkbox"><span class="txt">乳首＋予備の乳首 1個</span></label>
+<label><input type="checkbox"><span class="txt">哺乳瓶ブラシ</span></label>
+<label><input type="checkbox"><span class="txt">哺乳瓶用洗剤</span></label>
+<label><input type="checkbox"><span class="txt">消毒用品<small>薬液・電子レンジバッグ等、普段の方法に合わせる</small></span></label>
+<label><input type="checkbox"><span class="txt">調乳用のお湯を入れる水筒</span></label>
+<label><input type="checkbox"><span class="txt">調乳用の水<small>必要な場合のみ</small></span></label>
+<label><input type="checkbox"><span class="txt">液体ミルク 1〜2回分<small>渋滞・外出・非常時用</small></span></label>
+<label><input type="checkbox"><span class="txt">ガーゼ 5〜10枚</span></label>
+<label><input type="checkbox"><span class="txt">スタイ 3〜5枚</span></label>
+<label><input type="checkbox"><span class="txt">授乳ケープ<small>使う場合</small></span></label>
+<label><input type="checkbox"><span class="txt">母乳パッド<small>母乳の場合</small></span></label>
+<label><input type="checkbox"><span class="txt">搾乳器・保存容器<small>普段使っている場合</small></span></label>
+</section>
+
+<section><h2>4. 着替え・衣類</h2>
+<label><input type="checkbox"><span class="txt">肌着 3〜4枚</span></label>
+<label><input type="checkbox"><span class="txt">洋服 3セット</span></label>
+<label><input type="checkbox"><span class="txt">スリーパー</span></label>
+<label><input type="checkbox"><span class="txt">おくるみ／薄手ブランケット</span></label>
+<label><input type="checkbox"><span class="txt">帽子<small>日差し対策</small></span></label>
+<label><input type="checkbox"><span class="txt">汚れた服を分ける袋</span></label>
+</section>
+
+<section><h2>5. 寝るとき</h2>
+<label><input type="checkbox"><span class="txt">宿にベビーベッド／安全な寝床があるか確認</span></label>
+<label><input type="checkbox"><span class="txt">必要なら持ち運びできる安全なベビー用寝具</span></label>
+<label><input type="checkbox"><span class="txt">普段使っているスリーパー</span></label>
+<label><input type="checkbox"><span class="txt">夜間授乳・おむつ替え用の小さなライト</span></label>
+</section>
+
+<section><h2>6. お風呂・衛生</h2>
+<label><input type="checkbox"><span class="txt">ベビーソープ</span></label>
+<label><input type="checkbox"><span class="txt">保湿剤</span></label>
+<label><input type="checkbox"><span class="txt">ベビー用タオル／バスタオル</span></label>
+<label><input type="checkbox"><span class="txt">体温計</span></label>
+<label><input type="checkbox"><span class="txt">鼻吸い器<small>普段使っている場合</small></span></label>
+<label><input type="checkbox"><span class="txt">綿棒<small>必要なら</small></span></label>
+</section>
+
+<section><h2>7. 移動・外出</h2>
+<label><input type="checkbox"><span class="txt">ベビーカー</span></label>
+<label><input type="checkbox"><span class="txt">抱っこひも</span></label>
+<label><input type="checkbox"><span class="txt">ベビーカーの日よけ／サンシェード</span></label>
+<label><input type="checkbox"><span class="txt">外出用おむつポーチ</span></label>
+<label><input type="checkbox"><span class="txt">外出用ミルクセット</span></label>
+<label><input type="checkbox"><span class="txt">車内用ブランケット</span></label>
+<label><input type="checkbox"><span class="txt">車内の日よけ</span></label>
+<label><input type="checkbox"><span class="txt">車内にすぐ取れる着替え 1セット</span></label>
+<label><input type="checkbox"><span class="txt">車内にすぐ取れるおむつ 3〜5枚</span></label>
+</section>
+
+<section><h2>8. あるとかなり安心</h2>
+<label><input type="checkbox"><span class="txt">お気に入りのおもちゃ 1〜2個</span></label>
+<label><input type="checkbox"><span class="txt">いつもの音／ホワイトノイズ用スマホ・機器</span></label>
+<label><input type="checkbox"><span class="txt">除菌シート／ウェットティッシュ</span></label>
+<label><input type="checkbox"><span class="txt">ティッシュ</span></label>
+<label><input type="checkbox"><span class="txt">大きめのタオル 1枚<small>吐き戻し・敷物・防寒などに</small></span></label>
+<label><input type="checkbox"><span class="txt">予備のレジ袋</span></label>
+</section>
+
+<section><h2>9. 太郎さん・結衣さん</h2>
+<label><input type="checkbox"><span class="txt">着替え・下着・靴下</span></label>
+<label><input type="checkbox"><span class="txt">歯ブラシ・洗面用品</span></label>
+<label><input type="checkbox"><span class="txt">スキンケア・化粧品</span></label>
+<label><input type="checkbox"><span class="txt">常用薬</span></label>
+<label><input type="checkbox"><span class="txt">財布・免許証・ETCカード</span></label>
+<label><input type="checkbox"><span class="txt">スマホ充電器</span></label>
+<label><input type="checkbox"><span class="txt">コンタクト・眼鏡</span></label>
+</section>
+
+<section><h2>10. 出発直前チェック</h2>
+<label><input type="checkbox"><span class="txt">丈くんの授乳を済ませた</span></label>
+<label><input type="checkbox"><span class="txt">丈くんのおむつを替えた</span></label>
+<label><input type="checkbox"><span class="txt">チャイルドシートの固定を確認</span></label>
+<label><input type="checkbox"><span class="txt">ミルク・おむつ・着替えを「車内ですぐ取れるバッグ」に分けた</span></label>
+<label><input type="checkbox"><span class="txt">宿のチェックイン時刻・駐車場を確認</span></label>
+<label><input type="checkbox"><span class="txt">宿のベビー用品・電子レンジ・ケトル・冷蔵庫の有無を確認</span></label>
+<label><input type="checkbox"><span class="txt">最寄りの夜間救急／小児科をざっくり確認</span></label>
+<label><input type="checkbox"><span class="txt">ガソリン・ETC・タイヤなど車の基本確認</span></label>
+</section>
+
+<div class="note"><strong>睡眠だけ重要：</strong>仰向け・硬く平らな寝床を基本にし、顔まわりに枕・クッション・厚い掛け布団・ぬいぐるみ等を置かない。宿に安全なベビーベッド等があれば優先。</div>
+</div>
+
+<div class="footer"><div class="footerin"><button class="primary" onclick="shareState()">状態を共有</button><button onclick="window.scrollTo({top:0,behavior:'smooth'})">上へ</button><button onclick="resetAll()">リセット</button></div></div>
+
+<script>
+const KEY='jo_awaji_check_v3';
+const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+
+function encodeState(){
+  return boxes.map(b=>b.checked?'1':'0').join('');
+}
+function decodeState(s){
+  boxes.forEach((b,i)=>b.checked=s[i]==='1');
+}
+function save(){
+  const s=encodeState();
+  localStorage.setItem(KEY,s);
+  try{history.replaceState(null,'','#s='+s)}catch(e){}
+  update();
+}
+function load(){
+  const m=location.hash.match(/s=([01]+)/);
+  const s=m?m[1]:localStorage.getItem(KEY);
+  if(s) decodeState(s);
+  update();
+}
+function update(){
+  const n=boxes.filter(b=>b.checked).length;
+  document.getElementById('count').textContent=n+' / '+boxes.length;
+  document.getElementById('bar').style.width=(n/boxes.length*100)+'%';
+}
+function resetAll(){
+  if(confirm('すべてのチェックを外しますか？')){
+    boxes.forEach(b=>b.checked=false);
+    localStorage.removeItem(KEY);
+    try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+    update();
+  }
+}
+async function shareState(){
+  save();
+  const url=location.href;
+  try{
+    if(navigator.share){await navigator.share({title:'丈くん 初お泊まりチェックリスト',url});return}
+  }catch(e){}
+  try{await navigator.clipboard.writeText(url);alert('今のチェック状態を含むリンクをコピーしました。')}
+  catch(e){prompt('このリンクをコピーしてください',url)}
+}
+boxes.forEach(b=>b.addEventListener('change',save));
+load();
+</script>
+</body>
+</html>
